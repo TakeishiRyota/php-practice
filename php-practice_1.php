@@ -9,7 +9,7 @@ echo "私の名前は" . $name . "です";
 
 $num = 5 * 4;
 
-echo $num."<br>";
+echo $num."\n";
 echo $num / 2;
 
 // Q3 日付操作
@@ -18,16 +18,12 @@ echo Date("現在時刻は、Y年m月d日 H時m分s秒です。");
 
 // Q4 条件分岐-1 if文
 
-$device = "RedHat";
+$device = "windows";
 
-if($device == "windows"){
-    echo("使用OSは、macです。");
+if($device == "windows" || $device == "mac"){
+    echo("使用OSは、". $device. "です。");
 }else{
-    if($device == "mac"){
-        echo("使用OSは、macです。");
-    }else{
-        echo("どちらでもありません。");
-    }
+    echo("どちらでもありません。");
 }
 
 // Q5 条件分岐-2 三項演算子
@@ -47,81 +43,43 @@ echo $prefecture[2] . "と" . $prefecture[3] . "は関東地方の都道府県�
 // Q7 連想配列-1
 
 $area = [
-    "茨城県" => [
-        "capital" => "水戸市",
-        "region" => "関東"
-        ],
-    "群馬県" => [
-        "capital" => "前橋市",
-        "region" => "関東"
-        ],
-    "栃木県" => [
-        "capital" => "宇都宮市",
-        "region" => "関東"
-        ],
-    "千葉県" => [
-        "capital" => "千葉市",
-        "region" => "関東"
-        ],
-    "神奈川県" => [
-        "capital" => "横浜市",
-        "region" => "関東"
-        ],
-    "埼玉県" => [
-        "capital" => "さいたま市",
-        "region" => "関東"
-        ],
-    "東京都" => [
-        "capital" => "新宿区",
-        "region" => "関東"
-        ],
+    "茨城県" => "水戸市",
+    "群馬県" => "前橋市",
+    "栃木県" => "宇都宮市",
+    "千葉県" => "千葉市",
+    "神奈川県" => "横浜市",
+    "埼玉県" => "さいたま市",
+    "東京都" => "新宿区",
 ];
 
-echo $area["東京都"]["capital"]. "<br>";
-
-echo $area["神奈川県"]["capital"]. "<br>";
-
-echo $area["千葉県"]["capital"]. "<br>";
-
-echo $area["埼玉県"]["capital"]. "<br>";
-
-echo $area["栃木県"]["capital"]. "<br>";
-
-echo $area["群馬県"]["capital"]. "<br>";
-
-echo $area["茨城県"]["capital"]. "<br>";
+foreach ($area as $areaPrefecture => $areaCapital) {
+    echo $areaPrefecture. "の県庁所在地は、". $areaCapital. "です。\n";
+}
 
 // Q8 連想配列-2
-foreach ($area as $key => $value) {
-    if ($key === "埼玉県") {
-        echo $key. "の県庁所在地は、". $value["capital"] . "です。<br>";
+foreach ($area as $areaPrefecture => $areaCapital) {
+    if ($areaPrefecture === "埼玉県") {
+        echo $areaPrefecture. "の県庁所在地は、". $areaCapital . "です。\n";
     }
 }
 
 // Q9 連想配列-3
 
-$area["北海道"] = [
-    "capital" => "札幌市",
-    "region" => "北海道"
-];
+$area["北海道"] = "札幌市";
+$area["沖縄県"] = "那覇市";
 
-$area["沖縄県"] = [
-    "capital" => "那覇市",
-    "region" => "九州"
-];
-
-foreach ($area as $key => $value) {
-    if ($value["region"] === "関東") {
-        echo $key . "の県庁所在地は、" . $value["capital"] . "です。<br>";
+foreach ($area as $areaPrefecture => $areaCapitallue) {
+    if (in_array ($areaPrefecture, $prefecture)) {
+        echo $areaPrefecture . "の県庁所在地は、" . $areaCapitallue.  "です。\n";
     } else {
-        echo $key . "は関東地方ではありません。<br>";
+        echo $areaPrefecture . "は関東地方ではありません。\n";
     }
 }
 
 // Q10 関数-1
 
 function hello($name) {
-    echo "こんにちは！". $name. "さん<br>";
+    echo "こんにちは！". $name. "さん\n";
 }
 
 hello("佐藤");
@@ -136,23 +94,25 @@ function calcTaxInPrice($price) {
 
 $price = 1000;
 $taxInPrice = calcTaxInPrice($price);
-echo $price. "円の商品の税込価格は". $taxInPrice. "円です。<br>";
+echo $price. "円の商品の税込価格は". $taxInPrice. "円です。\n";
 
 // Q12 関数とif文
 
 function distinguishNum($num){
     if($num % 2 == 1){
-        echo $num. "は奇数です。<br>";
+        return $num. "は奇数です。\n";
     }else{
-        echo $num. "は偶数です。<br>";
+        return $num. "は偶数です。\n";
     }
 }
 
 $num1 = 11;
-distinguishNum($num1);
+$resultparity1 = distinguishNum($num1);
+echo $resultparity1;
 
 $num2 = 24;
-distinguishNum($num2);
+$resultparity2 = distinguishNum($num2);
+echo $resultparity2;
 
 // Q13 関数とswitch文
 
@@ -160,19 +120,19 @@ function evaluateGrade ($grade){
     switch ($grade) {
         case 'A':
         case 'B':
-            echo("合格です。<br>");
+            echo("合格です。\n");
             break;
             
         case 'C':
-            echo("合格ですが追加課題があります。<br>");
+            echo("合格ですが追加課題があります。\n");
             break;
             
         case 'D':
-            echo("不合格です。<br>");
+            echo("不合格です。\n");
             break;
         
         default:
-            echo("判定不明です。講師に問い合わせてください。<br>");
+            echo("判定不明です。講師に問い合わせてください。\n");
             break;
     }
 }

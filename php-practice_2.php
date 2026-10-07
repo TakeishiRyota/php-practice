@@ -2,14 +2,14 @@
 // Q1 tic-tac問題
 
 for ($i = 1; $i <= 100; $i++) {
-    if ($i % 4 == 0 && $i % 5 == 0) {
-        echo "tic-tac<br>";
-    } elseif ($i % 4 == 0) {
-        echo "tic<br>";
-    } elseif ($i % 5 == 0) {
-        echo "tac<br>";
+    if ($i % 4 === 0 && $i % 5 === 0) {
+        echo "tic-tac\n";
+    } elseif ($i % 4 === 0) {
+        echo "tic\n";
+    } elseif ($i % 5 === 0) {
+        echo "tac\n";
     } else {
-        echo $i . "<br>";
+        echo $i . "\n";
     }
 }
 
@@ -35,13 +35,13 @@ $personalInfos = [
 
 //問題1 多次元配列を用いた要素表示
 
-echo( $personalInfos[1]['name']. "の電話番号は". $personalInfos[1]['tel'] ."です。<br>");
+echo( $personalInfos[1]['name']. "の電話番号は". $personalInfos[1]['tel'] ."です。\n");
 
 //問題2 foreachを用いた表示
 
-foreach ($personalInfos as $key => $personalInfo) {
-    echo ($key + 1 ). "番目の". $personalInfo['name']. "のメールアドレスは". 
-        $personalInfo['mail']."で、電話番号は". $personalInfo['tel']. "です。<br>";
+foreach ($personalInfos as $index => $personalInfo) {
+    echo ($index + 1 ). "番目の". $personalInfo['name']. "のメールアドレスは". 
+        $personalInfo['mail']."で、電話番号は". $personalInfo['tel']. "です。\n";
 }
 
 
@@ -49,8 +49,8 @@ foreach ($personalInfos as $key => $personalInfo) {
 
 $ageList = [25, 30, 18];
 
-foreach ($personalInfos as $key => $personalInfo) {
-    $personalInfos[$key]['age'] = $ageList[$key];
+foreach ($personalInfos as $index => $personalInfo) {
+    $personalInfos[$index]['age'] = $ageList[$index];
 }
 
 var_dump($personalInfos);
@@ -70,13 +70,13 @@ class Student
 
     public function attend($subject)
     {
-        echo $this->studentName."は". $subject. "の授業に参加しました。学籍番号：". $this->studentId. "<br>";
+        echo $this->studentName."は". $subject. "の授業に参加しました。学籍番号：". $this->studentId. "\n";
     }
 }
 
 $Student1 = new Student(777, "大当");
 
-echo "学籍番号". $Student1->studentId. "番の生徒は" .$Student1->studentName. "です。<br>";
+echo "学籍番号". $Student1->studentId. "番の生徒は" .$Student1->studentName. "です。\n";
 
 // Q4 オブジェクト-2
 
@@ -89,13 +89,13 @@ $date = new DateTime();
 
 $date->modify('-1month');
 
-echo $date->format('Y-m-d')."<br>";
+echo $date->format('Y-m-d')."\n";
 
 //問題2 日数の差分出力
 $oldDate = new DateTime(1992-04-25);
 
 $diff = $date->diff($oldDate);
 
-echo "あの日から". $diff->days. "日経過しました。<br>";
+echo "あの日から". $diff->days. "日経過しました。\n";
 
 ?>
